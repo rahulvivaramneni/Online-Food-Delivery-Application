@@ -1,4 +1,5 @@
 using Food_Delivery_App_API.Entities;
+using Food_Delivery_App_API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +31,10 @@ namespace Food_Delivery_App_API
         {
             services.AddDbContext<OnlineFoodDeliveryContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-           );
+           );            
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IRestaurantOwnerRepository, RestaurantOwnerRepository>();
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

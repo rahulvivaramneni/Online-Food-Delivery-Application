@@ -22,7 +22,7 @@ RestaurantAddress varchar(100) not null,
 City varchar(50) not null,
 UserId int foreign key references Users(UserId)
 )
-/*drop table Users*/
+
 
 create table Items(
 ItemId int identity primary key,

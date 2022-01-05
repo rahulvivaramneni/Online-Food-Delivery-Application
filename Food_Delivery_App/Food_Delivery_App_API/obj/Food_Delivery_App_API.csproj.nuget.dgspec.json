@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj": {}
+    "E:\\IDigitalProject1\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj": {
+    "E:\\IDigitalProject1\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
+        "projectUniqueName": "E:\\IDigitalProject1\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
         "projectName": "Food_Delivery_App_API",
-        "projectPath": "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\obj\\",
+        "projectPath": "E:\\IDigitalProject1\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
+        "packagesPath": "C:\\Users\\anujg\\.nuget\\packages\\",
+        "outputPath": "E:\\IDigitalProject1\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anujg\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
