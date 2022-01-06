@@ -28,7 +28,7 @@ namespace Food_Delivery_App_API.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-DHE93BQG\\SQLEXPRESS;Initial Catalog=OnlineFoodDelivery;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-LFJK55DG\\SQLEXPRESS02;Initial Catalog=OnlineFoodDelivery;Integrated Security=True");
             }
         }
 
@@ -39,7 +39,7 @@ namespace Food_Delivery_App_API.Entities
             modelBuilder.Entity<DeliveryAgent>(entity =>
             {
                 entity.HasKey(e => e.AgentId)
-                    .HasName("PK__Delivery__9AC3BFF11E55B288");
+                    .HasName("PK__Delivery__9AC3BFF1F40F3A0E");
 
                 entity.Property(e => e.AgentName)
                     .IsRequired()
@@ -54,7 +54,7 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.Restaraunt)
                     .WithMany(p => p.DeliveryAgents)
                     .HasForeignKey(d => d.RestarauntId)
-                    .HasConstraintName("FK__DeliveryA__Resta__3B75D760");
+                    .HasConstraintName("FK__DeliveryA__Resta__7D439ABD");
             });
 
             modelBuilder.Entity<Item>(entity =>
@@ -79,7 +79,7 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.RestaurantId)
-                    .HasConstraintName("FK__Items__Restauran__37A5467C");
+                    .HasConstraintName("FK__Items__Restauran__797309D9");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -101,17 +101,17 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.Agent)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.AgentId)
-                    .HasConstraintName("FK__Orders__AgentId__3F466844");
+                    .HasConstraintName("FK__Orders__AgentId__01142BA1");
 
                 entity.HasOne(d => d.Restaraunt)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.RestarauntId)
-                    .HasConstraintName("FK__Orders__Restarau__3E52440B");
+                    .HasConstraintName("FK__Orders__Restarau__00200768");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Orders__UserId__403A8C7D");
+                    .HasConstraintName("FK__Orders__UserId__02084FDA");
             });
 
             modelBuilder.Entity<Restaurant>(entity =>
@@ -139,12 +139,12 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Restaurants)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Restauran__UserI__34C8D9D1");
+                    .HasConstraintName("FK__Restauran__UserI__76969D2E");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.EmailId, "UQ__Users__7ED91ACEB1B6110C")
+                entity.HasIndex(e => e.EmailId, "UQ__Users__7ED91ACE6ABE14C3")
                     .IsUnique();
 
                 entity.Property(e => e.City)

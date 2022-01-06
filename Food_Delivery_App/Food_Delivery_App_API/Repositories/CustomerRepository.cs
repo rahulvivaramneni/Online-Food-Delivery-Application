@@ -34,7 +34,7 @@ namespace Food_Delivery_App_API.Repositories
             throw new NotImplementedException();
         }
 
-        public void updateCustomerDetails(User user)
+        public void UpdateCustomerDetails(User user)
         {
             throw new NotImplementedException();
         }

@@ -16,7 +16,7 @@ namespace Food_Delivery_App_API.Repositories
         void CancelOrder(int OrderId);
         List<Order> ViewOrdersOfCustomer(int UserId);
         List<Order> OrderStatus(int UserId);
-        void updateCustomerDetails(User user);
+        void UpdateCustomerDetails(User user);
         //Logout Function
     }
 }
