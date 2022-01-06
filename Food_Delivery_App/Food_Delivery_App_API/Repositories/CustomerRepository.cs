@@ -19,9 +19,20 @@ namespace Food_Delivery_App_API.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Order> OrderStatus(int UserId)
+        public List<Order> OrderStatus(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Order> order = new List<Order>();
+                order = db.Orders.Where(u => u.UserId == userId).ToList();
+
+                return order;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void PlaceOrder(Order order)

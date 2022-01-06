@@ -9,11 +9,12 @@ namespace Food_Delivery_App_API.Repositories
     public interface IRestaurantOwnerRepository
     {
         void AddRestaurant(Restaurant restaurant);
-        void UpdateRestaurant(int restaurantId);
+        void UpdateRestaurant(Restaurant restaurant);
         void AddItem(Item item);
-        void UpdateItem(int itemId);
+        public void DeleteItem(int itemId);
+        void UpdateItem(Item item);
         void AddAgentDetails(DeliveryAgent deliveryAgent);
-        void UpdateAgentDetails(int agentId);
+        void UpdateAgentDetails(DeliveryAgent deliveryAgent);
         List<Item> ViewMenu(int restaurantId);// Owner can able to all the items in the menu        
         Restaurant ViewRestaurantDetails(int restaurantId);
         List<DeliveryAgent> ViewDeliveryAgentDetails(int restaurantId);

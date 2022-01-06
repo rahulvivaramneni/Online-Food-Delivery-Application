@@ -31,5 +31,21 @@ namespace Food_Delivery_App_API.Controllers
                 return Content(ex.Message);
             }
         }
+        [HttpGet]
+        [Route("GetStatus/{id}")]
+        public IActionResult GetStatus(int id)
+        {
+            try
+            {
+                List<Order> orders = customerRepository.OrderStatus(id);
+                return Ok(orders);
+
+            }
+            catch (Exception ex)
+            {
+
+                return Content(ex.Message);
+            }
+        }
     }
 }
