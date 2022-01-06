@@ -41,7 +41,7 @@ AgentPhone varchar(11) not null)
 
 create table Orders(
 OrderId  int identity primary key,
-RestarauntId int foreign key references Restaurants(RestaurantId),
+RestaurantId int foreign key references Restaurants(RestaurantId),
 AgentId int foreign key references DeliveryAgents(AgentId),
 UserId int foreign key references Users(UserId),
 PaymentMode varchar(20) not null,

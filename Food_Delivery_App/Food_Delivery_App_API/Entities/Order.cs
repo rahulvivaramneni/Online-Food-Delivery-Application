@@ -8,7 +8,7 @@ namespace Food_Delivery_App_API.Entities
     public partial class Order
     {
         public int OrderId { get; set; }
-        public int? RestarauntId { get; set; }
+        public int? RestaurantId { get; set; }
         public int? AgentId { get; set; }
         public int? UserId { get; set; }
         public string PaymentMode { get; set; }
@@ -17,7 +17,7 @@ namespace Food_Delivery_App_API.Entities
         public string OrderStatus { get; set; }
 
         public virtual DeliveryAgent Agent { get; set; }
-        public virtual Restaurant Restaraunt { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
         public virtual User User { get; set; }
     }
 }

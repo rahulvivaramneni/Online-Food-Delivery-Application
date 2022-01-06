@@ -101,17 +101,17 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.Agent)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.AgentId)
-                    .HasConstraintName("FK__Orders__AgentId__01142BA1");
+                    .HasConstraintName("FK__Orders__AgentId__06CD04F7");
 
-                entity.HasOne(d => d.Restaraunt)
+                entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.RestarauntId)
-                    .HasConstraintName("FK__Orders__Restarau__00200768");
+                    .HasForeignKey(d => d.RestaurantId)
+                    .HasConstraintName("FK__Orders__Restaura__05D8E0BE");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Orders__UserId__02084FDA");
+                    .HasConstraintName("FK__Orders__UserId__07C12930");
             });
 
             modelBuilder.Entity<Restaurant>(entity =>

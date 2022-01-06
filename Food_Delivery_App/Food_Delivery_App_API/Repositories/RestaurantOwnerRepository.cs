@@ -48,24 +48,60 @@ namespace Food_Delivery_App_API.Repositories
             throw new NotImplementedException();
         }
 
-        public List<DeliveryAgent> ViewDeliveryAgentDetails()
+        public List<DeliveryAgent> ViewDeliveryAgentDetails(int restaurantId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<DeliveryAgent> deliveryAgents = db.DeliveryAgents.Where(i => i.RestarauntId == restaurantId).ToList();
+                return deliveryAgents;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Item> ViewMenu(int restaurantId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Item> items = db.Items.Where(i=>i.RestaurantId==restaurantId).ToList();
+                return items;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Order> ViewOrderDetails(int restaurantId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Order> orders = db.Orders.Where(i => i.RestaurantId == restaurantId).ToList();
+                return orders;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public List<Restaurant> ViewRestaurantDetails(Restaurant restaurant)
+        public Restaurant ViewRestaurantDetails(int restaurantId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Restaurant restaurant = db.Restaurants.Where(i=>i.RestaurantId==restaurantId).First();
+                return restaurant;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
