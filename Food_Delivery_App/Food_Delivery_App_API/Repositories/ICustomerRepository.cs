@@ -13,9 +13,9 @@ namespace Food_Delivery_App_API.Repositories
         List<Restaurant> ViewAllRestarauntsByCity(string City);
         Restaurant SearchRestarauntByName(string ResturantName);
         void PlaceOrder(Order order);
-        void CancelOrder(int OrderId);
-        List<Order> ViewOrdersOfCustomer(int UserId);
-        List<Order> OrderStatus(int UserId);
+        int CancelOrder(long OrderId);
+        List<Order> ViewOrdersOfCustomer(long UserId);
+        List<Order> OrderStatus(long UserId);
         void UpdateCustomerDetails(User user);
         //Logout Function
     }

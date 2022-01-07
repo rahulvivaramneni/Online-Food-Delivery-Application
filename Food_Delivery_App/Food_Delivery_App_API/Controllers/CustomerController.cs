@@ -33,7 +33,7 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpGet]
         [Route("GetStatus/{id}")]
-        public IActionResult GetStatus(int id)
+        public IActionResult GetStatus(long id)
         {
             try
             {
@@ -94,12 +94,33 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpGet]
         [Route("ViewOrdersOfCustomer")]
-        public IActionResult ViewOrdersOfCustomer(int UserId)
+        public IActionResult ViewOrdersOfCustomer(long UserId)
         {
             try
             {
                 List<Order> orders = customerRepository.ViewOrdersOfCustomer(UserId);
                 return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
+        [HttpPut]
+        [Route("CancelOrder")]
+        public IActionResult CancelOrder(long orderId)
+        {
+            try
+            {
+                int x = customerRepository.CancelOrder(orderId);
+                if (x == 1)
+                {
+                    return Ok("Delivered Order");
+                }
+                else
+                {
+                    return Ok("Cancelled order");
+                }
             }
             catch (Exception ex)
             {

@@ -25,7 +25,7 @@ namespace Food_Delivery_App_API.Repositories
                 throw;
             }
         }
-        public void DeleteItem(int itemId)
+        public void DeleteItem(long itemId)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public void UpdateOrderStatus(int orderId, string orderStatus)
+        public void UpdateOrderStatus(long orderId, string orderStatus)
         {
             Order order = db.Orders.Find(orderId);
             order.OrderStatus = orderStatus;
@@ -121,7 +121,7 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public List<DeliveryAgent> ViewDeliveryAgentDetails(int restaurantId)
+        public List<DeliveryAgent> ViewDeliveryAgentDetails(long restaurantId)
         {
             try
             {
@@ -135,7 +135,7 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public List<Item> ViewMenu(int restaurantId)
+        public List<Item> ViewMenu(long restaurantId)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public List<Order> ViewOrderDetails(int restaurantId)
+        public List<Order> ViewOrderDetails(long restaurantId)
         {
             try
             {
@@ -163,7 +163,7 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public Restaurant ViewRestaurantDetails(int restaurantId)
+        public Restaurant ViewRestaurantDetails(long restaurantId)
         {
             try
             {

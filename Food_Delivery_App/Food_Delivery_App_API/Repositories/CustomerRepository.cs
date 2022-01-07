@@ -14,12 +14,36 @@ namespace Food_Delivery_App_API.Repositories
             this.db = db;
         }
 
-        public void CancelOrder(int OrderId)
+        public int CancelOrder(long orderid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Order orders = db.Orders.Find(orderid);
+                if (orders.OrderStatus == "Delivered")
+                {
+                    orders.OrderStatus = "Delivered";
+                    db.Update(orders);
+                    db.SaveChanges();
+
+                    return 1;
+                }
+                else
+                {
+                    orders.OrderStatus = "Cancelled";
+                    db.Update(orders);
+                    db.SaveChanges();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
-        public List<Order> OrderStatus(int userId)
+        public List<Order> OrderStatus(long userId)
         {
             try
             {
@@ -99,7 +123,7 @@ namespace Food_Delivery_App_API.Repositories
 
         }
 
-        public List<Order> ViewOrdersOfCustomer(int UserId)
+        public List<Order> ViewOrdersOfCustomer(long UserId)
         {
             try
             {

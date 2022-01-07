@@ -11,14 +11,14 @@ namespace Food_Delivery_App_API.Repositories
         void AddRestaurant(Restaurant restaurant);
         void UpdateRestaurant(Restaurant restaurant);
         void AddItem(Item item);
-        public void DeleteItem(int itemId);
+        public void DeleteItem(long itemId);
         void UpdateItem(Item item);
         void AddAgentDetails(DeliveryAgent deliveryAgent);
         void UpdateAgentDetails(DeliveryAgent deliveryAgent);
-        List<Item> ViewMenu(int restaurantId);// Owner can able to all the items in the menu        
-        Restaurant ViewRestaurantDetails(int restaurantId);
-        List<DeliveryAgent> ViewDeliveryAgentDetails(int restaurantId);
-        List<Order> ViewOrderDetails(int restaurantId);
-        void UpdateOrderStatus(int orderId,string orderStatus);
+        List<Item> ViewMenu(long restaurantId);// Owner can able to all the items in the menu        
+        Restaurant ViewRestaurantDetails(long restaurantId);
+        List<DeliveryAgent> ViewDeliveryAgentDetails(long restaurantId);
+        List<Order> ViewOrderDetails(long restaurantId);
+        void UpdateOrderStatus(long orderId,string orderStatus);
     }
 }

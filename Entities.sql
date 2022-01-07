@@ -1,7 +1,8 @@
 /*creating database*/
 create database OnlineFoodDelivery
-
+use OnlineFoodDelivery
 /*user table*/
+/*Role-0-Customer,Role-1-Owner*/
 create table Users(
 UserId bigint identity primary key,
 FirstName varchar(50) not null,
@@ -73,4 +74,5 @@ select *from Restaurants
 select * from Items
 select * from DeliveryAgents
 select * from Orders
+insert into Orders values(2,1,2,'NetBanking',2,40.00,'On the way')
 

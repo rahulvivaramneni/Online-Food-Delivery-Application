@@ -1,5 +1,6 @@
 ﻿using Food_Delivery_App_API.Entities;
 using Food_Delivery_App_API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,8 @@ namespace Food_Delivery_App_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //need to implement in UI
+    [Authorize(Roles = "Owner")]
     public class RestaurantOwnerController : ControllerBase
     {
         private readonly IRestaurantOwnerRepository restaurantOwnerRepository;
@@ -20,7 +23,7 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpGet]
         [Route("ViewDeliveryAgentDetails")]
-        public IActionResult ViewDeliveryAgentDetails(int restaurantId)
+        public IActionResult ViewDeliveryAgentDetails(long restaurantId)
         {
             try
             {
@@ -34,7 +37,7 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpGet]
         [Route("ViewMenu")]
-        public IActionResult ViewMenu(int restaurantId)
+        public IActionResult ViewMenu(long restaurantId)
         {
             try
             {
@@ -48,7 +51,7 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpGet]
         [Route("ViewOrderDetails")]
-        public IActionResult ViewOrderDetails(int restaurantId)
+        public IActionResult ViewOrderDetails(long restaurantId)
         {
             try
             {
@@ -62,7 +65,7 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpGet]
         [Route("ViewRestaurantDetails")]
-        public IActionResult ViewRestaurantDetails(int restaurantId)
+        public IActionResult ViewRestaurantDetails(long restaurantId)
         {
             try
             {
@@ -134,7 +137,7 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpPut]
         [Route("UpdateOrderStatus/{orderId}")]
-        public void UpdateOrderStatus(int orderId, string orderStatus)
+        public void UpdateOrderStatus(long orderId, string orderStatus)
         {
             restaurantOwnerRepository.UpdateOrderStatus(orderId, orderStatus);
         }
@@ -154,7 +157,7 @@ namespace Food_Delivery_App_API.Controllers
         }
         [HttpDelete]
         [Route("DeleteItem/{itemId}")]
-        public IActionResult DeleteItem(int itemId)
+        public IActionResult DeleteItem(long itemId)
         {
             try
             {
