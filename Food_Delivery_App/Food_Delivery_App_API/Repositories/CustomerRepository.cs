@@ -42,12 +42,31 @@ namespace Food_Delivery_App_API.Repositories
 
         public Restaurant SearchRestarauntByName(string ResturantName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Restaurant restaurant = db.Restaurants.Where(i => i.RestaurantName == ResturantName).FirstOrDefault<Restaurant>();
+                return restaurant;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public void UpdateCustomerDetails(User user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Users.Update(user);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Restaurant> ViewAllRestaraunts()
@@ -66,12 +85,32 @@ namespace Food_Delivery_App_API.Repositories
 
         public List<Restaurant> ViewAllRestarauntsByCity(string City)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                List<Restaurant> restaurants = db.Restaurants.Where(i => i.City == City).ToList();
+                return restaurants;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public List<Order> ViewOrdersOfCustomer(int UserId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Order> orders = db.Orders.Where(i => i.UserId == UserId).ToList();
+                return orders;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
