@@ -14,12 +14,13 @@ namespace Food_Delivery_App_API.Entities
             Orders = new HashSet<Order>();
         }
 
-        public int RestaurantId { get; set; }
+        public long RestaurantId { get; set; }
         public string RestaurantName { get; set; }
         public string PhoneNumber { get; set; }
         public string RestaurantAddress { get; set; }
         public string City { get; set; }
-        public int? UserId { get; set; }
+        public string RestaurantImg { get; set; }
+        public long? UserId { get; set; }
 
         public virtual User User { get; set; }
         public virtual ICollection<DeliveryAgent> DeliveryAgents { get; set; }

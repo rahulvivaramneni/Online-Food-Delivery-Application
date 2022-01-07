@@ -39,7 +39,7 @@ namespace Food_Delivery_App_API.Entities
             modelBuilder.Entity<DeliveryAgent>(entity =>
             {
                 entity.HasKey(e => e.AgentId)
-                    .HasName("PK__Delivery__9AC3BFF1F40F3A0E");
+                    .HasName("PK__Delivery__9AC3BFF1B9D7B08A");
 
                 entity.Property(e => e.AgentName)
                     .IsRequired()
@@ -51,10 +51,10 @@ namespace Food_Delivery_App_API.Entities
                     .HasMaxLength(11)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.Restaraunt)
+                entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.DeliveryAgents)
-                    .HasForeignKey(d => d.RestarauntId)
-                    .HasConstraintName("FK__DeliveryA__Resta__7D439ABD");
+                    .HasForeignKey(d => d.RestaurantId)
+                    .HasConstraintName("FK__DeliveryA__Resta__282DF8C2");
             });
 
             modelBuilder.Entity<Item>(entity =>
@@ -69,6 +69,10 @@ namespace Food_Delivery_App_API.Entities
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ItemImg)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ItemName)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -79,7 +83,7 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.RestaurantId)
-                    .HasConstraintName("FK__Items__Restauran__797309D9");
+                    .HasConstraintName("FK__Items__Restauran__245D67DE");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -101,17 +105,17 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.Agent)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.AgentId)
-                    .HasConstraintName("FK__Orders__AgentId__06CD04F7");
+                    .HasConstraintName("FK__Orders__AgentId__2BFE89A6");
 
                 entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.RestaurantId)
-                    .HasConstraintName("FK__Orders__Restaura__05D8E0BE");
+                    .HasConstraintName("FK__Orders__Restaura__2B0A656D");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Orders__UserId__07C12930");
+                    .HasConstraintName("FK__Orders__UserId__2CF2ADDF");
             });
 
             modelBuilder.Entity<Restaurant>(entity =>
@@ -131,6 +135,10 @@ namespace Food_Delivery_App_API.Entities
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.RestaurantImg)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.RestaurantName)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -139,12 +147,12 @@ namespace Food_Delivery_App_API.Entities
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Restaurants)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Restauran__UserI__76969D2E");
+                    .HasConstraintName("FK__Restauran__UserI__2180FB33");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.EmailId, "UQ__Users__7ED91ACE6ABE14C3")
+                entity.HasIndex(e => e.EmailId, "UQ__Users__7ED91ACE6EDCFD2F")
                     .IsUnique();
 
                 entity.Property(e => e.City)

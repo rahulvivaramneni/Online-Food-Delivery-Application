@@ -7,10 +7,10 @@ namespace Food_Delivery_App_API.Entities
 {
     public partial class Order
     {
-        public int OrderId { get; set; }
-        public int? RestaurantId { get; set; }
-        public int? AgentId { get; set; }
-        public int? UserId { get; set; }
+        public long OrderId { get; set; }
+        public long? RestaurantId { get; set; }
+        public long? AgentId { get; set; }
+        public long? UserId { get; set; }
         public string PaymentMode { get; set; }
         public int? Quantity { get; set; }
         public decimal TotalPrice { get; set; }

@@ -132,6 +132,12 @@ namespace Food_Delivery_App_API.Controllers
                 return Content(ex.Message);
             }
         }
+        [HttpPut]
+        [Route("UpdateOrderStatus/{orderId}")]
+        public void UpdateOrderStatus(int orderId, string orderStatus)
+        {
+            restaurantOwnerRepository.UpdateOrderStatus(orderId, orderStatus);
+        }
         [HttpPost]
         [Route("AddItem")]
         public IActionResult AddLead(Item item)
@@ -154,6 +160,20 @@ namespace Food_Delivery_App_API.Controllers
             {
                 restaurantOwnerRepository.DeleteItem(itemId);
                 return Ok("Item Deleted Successfully");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
+        [HttpPost]
+        [Route("AddRestaurant")]
+        public IActionResult AddRestaurant(Restaurant restaurant)
+        {
+            try
+            {
+                restaurantOwnerRepository.AddRestaurant(restaurant);
+                return Ok();
             }
             catch (Exception ex)
             {

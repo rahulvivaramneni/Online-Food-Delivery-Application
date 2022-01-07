@@ -60,7 +60,15 @@ namespace Food_Delivery_App_API.Repositories
 
         public void AddRestaurant(Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Restaurants.Add(restaurant);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void UpdateAgentDetails(DeliveryAgent deliveryAgent)
@@ -92,9 +100,11 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public void UpdateOrderStatus(int orderId)
+        public void UpdateOrderStatus(int orderId, string orderStatus)
         {
-            throw new NotImplementedException();
+            Order order = db.Orders.Find(orderId);
+            order.OrderStatus = orderStatus;
+            db.SaveChanges();
         }
 
         public void UpdateRestaurant(Restaurant restaurant)
@@ -115,7 +125,7 @@ namespace Food_Delivery_App_API.Repositories
         {
             try
             {
-                List<DeliveryAgent> deliveryAgents = db.DeliveryAgents.Where(i => i.RestarauntId == restaurantId).ToList();
+                List<DeliveryAgent> deliveryAgents = db.DeliveryAgents.Where(i => i.RestaurantId == restaurantId).ToList();
                 return deliveryAgents;
             }
             catch (Exception)

@@ -19,6 +19,6 @@ namespace Food_Delivery_App_API.Repositories
         Restaurant ViewRestaurantDetails(int restaurantId);
         List<DeliveryAgent> ViewDeliveryAgentDetails(int restaurantId);
         List<Order> ViewOrderDetails(int restaurantId);
-        void UpdateOrderStatus(int orderId);
+        void UpdateOrderStatus(int orderId,string orderStatus);
     }
 }
