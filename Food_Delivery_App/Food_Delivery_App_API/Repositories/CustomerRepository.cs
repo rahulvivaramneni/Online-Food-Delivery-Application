@@ -59,9 +59,22 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public void PlaceOrder(Order order)
+        public void PlaceOrder(Order orders)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                db.Orders.Add(orders);
+                //Item items = db.Items.Find(itemid);
+                //orders.TotalPrice = (decimal)orders.Quantity * items.Price;
+                //db.Update(orders);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         public Restaurant SearchRestarauntByName(string ResturantName)

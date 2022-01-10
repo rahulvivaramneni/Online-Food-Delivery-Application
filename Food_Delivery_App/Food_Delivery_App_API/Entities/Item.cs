@@ -7,6 +7,11 @@ namespace Food_Delivery_App_API.Entities
 {
     public partial class Item
     {
+        public Item()
+        {
+            OrderDetails = new HashSet<OrderDetail>();
+        }
+
         public long ItemId { get; set; }
         public long? RestaurantId { get; set; }
         public string ItemName { get; set; }
@@ -16,5 +21,6 @@ namespace Food_Delivery_App_API.Entities
         public bool? IsAvailable { get; set; }
 
         public virtual Restaurant Restaurant { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

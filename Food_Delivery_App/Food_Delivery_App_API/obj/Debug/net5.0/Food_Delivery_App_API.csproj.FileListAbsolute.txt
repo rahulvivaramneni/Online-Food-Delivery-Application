@@ -22,7 +22,6 @@ C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Applica
 C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -181,3 +180,4 @@ E:\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_A
 E:\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\obj\Debug\net5.0\Food_Delivery_App_API.pdb
 E:\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\obj\Debug\net5.0\Food_Delivery_App_API.genruntimeconfig.cache
 E:\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\admin\Desktop\Food Delivery App\iDigital8--Online-Food-Delivery-Application\Food_Delivery_App\Food_Delivery_App_API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

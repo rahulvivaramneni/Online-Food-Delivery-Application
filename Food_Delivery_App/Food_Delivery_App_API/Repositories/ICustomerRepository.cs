@@ -12,6 +12,7 @@ namespace Food_Delivery_App_API.Repositories
         List<Restaurant> ViewAllRestaraunts();
         List<Restaurant> ViewAllRestarauntsByCity(string City);
         Restaurant SearchRestarauntByName(string ResturantName);
+
         void PlaceOrder(Order order);
         int CancelOrder(long OrderId);
         List<Order> ViewOrdersOfCustomer(long UserId);

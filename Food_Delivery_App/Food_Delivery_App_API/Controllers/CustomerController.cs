@@ -127,5 +127,20 @@ namespace Food_Delivery_App_API.Controllers
                 return Content(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("PlaceOrder")]
+        public IActionResult PlaceOrder(Order orders)
+        {
+            try
+            {
+                customerRepository.PlaceOrder(orders);
+                return Ok("Order Placed and your OrderId is " + orders.OrderId);
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
     }
 }

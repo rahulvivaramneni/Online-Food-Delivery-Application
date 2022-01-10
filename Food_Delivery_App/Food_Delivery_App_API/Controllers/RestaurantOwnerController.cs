@@ -13,7 +13,7 @@ namespace Food_Delivery_App_API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //need to implement in UI
-    [Authorize(Roles = "Owner")]
+    //[Authorize(Roles = "Owner")]
     public class RestaurantOwnerController : ControllerBase
     {
         private readonly IRestaurantOwnerRepository restaurantOwnerRepository;
