@@ -13,7 +13,7 @@ EmailId varchar(50) unique not null,
 UserPassword varchar(50) not null,
 UserAddress varchar(100) not null,
 City varchar(50) not null,
-UserRole bit not null,
+UserRole varchar(10) not null,
 )
 
 create table Restaurants(
@@ -61,8 +61,8 @@ Quantity int
 )
 
 /*drop table Users*/
-insert into Users values('Tina','Smith','9123456789','Tina@gmail.com','Tin@123','sadsfsdgrdfhgfgfxgdsfdf','Pune',0)
-insert into Users values('Priya','Smith','9123456789','Priya@gmail.com','Priy@123','sadsfsdgrdfhgfgfxgdsfdf','Pune',1)
+insert into Users values('Tina','Smith','9123456789','Tina@gmail.com','Tin@123','sadsfsdgrdfhgfgfxgdsfdf','Pune','Customer')
+insert into Users values('Priya','Smith','9123456789','Priya@gmail.com','Priy@123','sadsfsdgrdfhgfgfxgdsfdf','Pune','Admin')
 
 insert into Restaurants values('Park Inn','987456321','Cannaught place','New Delhi','img1.jpg',1)
 insert into Restaurants values('Central Park','907456321','Cannaught place','New Delhi','img2.jpg',1)
@@ -86,3 +86,14 @@ select * from Orders
 select * from OrderDetails
 insert into Orders values(2,1,2,'NetBanking',40.00,'On the way')
 
+/*Please run below command, no need to drop table*/
+ALTER TABLE Users
+ALTER COLUMN UserRole varchar(10)
+
+UPDATE Users
+SET UserRole = 'Owner'
+WHERE UserId=1;
+
+UPDATE Users
+SET UserRole = 'Customer'
+WHERE UserId=2;

@@ -85,12 +85,13 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public void UpdateItem(Item item)
+        public void UpdateItem(int itemId, decimal price, string itemDescription)
         {
             try
             {
-                
-                db.Items.Update(item);
+                Item item = db.Items.Find(itemId);
+                item.Price = price;
+                item.ItemDescription = itemDescription;
                 db.SaveChanges();
             }
             catch (Exception)
@@ -99,6 +100,7 @@ namespace Food_Delivery_App_API.Repositories
                 throw;
             }
         }
+
 
         public void UpdateOrderStatus(long orderId, string orderStatus)
         {

@@ -41,7 +41,7 @@ namespace Food_Delivery_App_API.Controllers
             }
             else
             {
-                model = new UserModule() { UserId = 0, Token = "", Role = false };
+                model = new UserModule() { UserId = 0, Token = "", Role = "" };
             }
 
 
@@ -56,7 +56,7 @@ namespace Food_Delivery_App_API.Controllers
             try
             {
                 UserRepository.AddUser(user);
-                return Ok();
+                return Ok("Your userID is: " + user.UserId);
             }
             catch (Exception ex)
             {

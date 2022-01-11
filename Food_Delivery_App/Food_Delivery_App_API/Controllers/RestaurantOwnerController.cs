@@ -121,12 +121,12 @@ namespace Food_Delivery_App_API.Controllers
             }
         }
         [HttpPut]
-        [Route("UpdateItem")]
-        public IActionResult PutUpdateItem(Item item)
+        [Route("UpdateItem/{itemId}")]
+        public IActionResult PutUpdateItem(int itemId, decimal price, string itemDescription)
         {
             try
             {
-                restaurantOwnerRepository.UpdateItem(item);
+                restaurantOwnerRepository.UpdateItem(itemId, price, itemDescription);
                 return Ok();
             }
             catch (Exception ex)

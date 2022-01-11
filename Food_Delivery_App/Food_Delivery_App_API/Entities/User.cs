@@ -21,7 +21,7 @@ namespace Food_Delivery_App_API.Entities
         public string UserPassword { get; set; }
         public string UserAddress { get; set; }
         public string City { get; set; }
-        public bool UserRole { get; set; }
+        public string UserRole { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Restaurant> Restaurants { get; set; }
