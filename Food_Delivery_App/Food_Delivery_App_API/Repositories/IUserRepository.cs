@@ -9,5 +9,6 @@ namespace Food_Delivery_App_API.Repositories
     public interface IUserRepository
     {
         User ValidateUser(string emailId, string password);
+        void AddUser(User user);
     }
 }

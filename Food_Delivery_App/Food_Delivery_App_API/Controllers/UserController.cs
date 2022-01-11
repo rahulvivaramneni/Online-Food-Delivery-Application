@@ -49,6 +49,21 @@ namespace Food_Delivery_App_API.Controllers
             return Ok(model);
         }
 
+        [HttpPost]
+        [Route("AddUser")]
+        public IActionResult AddUser(User user)
+        {
+            try
+            {
+                UserRepository.AddUser(user);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
+
         private string GetToken(User user)
         {
             var _config = new ConfigurationBuilder()

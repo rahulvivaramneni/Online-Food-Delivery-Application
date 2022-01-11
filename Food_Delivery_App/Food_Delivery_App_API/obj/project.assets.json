@@ -5568,19 +5568,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
+      "projectUniqueName": "E:\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
       "projectName": "Food_Delivery_App_API",
-      "projectPath": "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\Food Delivery App\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\obj\\",
+      "projectPath": "E:\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\Food_Delivery_App_API.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "E:\\iDigital8--Online-Food-Delivery-Application\\Food_Delivery_App\\Food_Delivery_App_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5588,7 +5588,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://sitecore.myget.org/F/sc-packages/api/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
@@ -5647,7 +5648,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

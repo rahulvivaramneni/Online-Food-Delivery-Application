@@ -14,6 +14,21 @@ namespace Food_Delivery_App_API.Repositories
         {
             this.db = db;
         }
+
+        public void AddUser(User user)
+        {
+            try
+            {
+
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public User ValidateUser(string emailId, string password)
         {
             try
