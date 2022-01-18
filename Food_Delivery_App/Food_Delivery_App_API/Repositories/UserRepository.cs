@@ -33,7 +33,13 @@ namespace Food_Delivery_App_API.Repositories
         {
             try
             {
-                return db.Users.SingleOrDefault(u => u.EmailId == emailId && u.UserPassword == password);
+                var users = db.Users.Where(x => x.EmailId == emailId).ToArray();
+                if (users.Any(u => u.UserPassword == password))
+
+                    return db.Users.SingleOrDefault(u => u.EmailId == emailId && u.UserPassword == password);
+                else
+                    return null;
+                //return db.Users.SingleOrDefault(u => u.EmailId == emailId && u.UserPassword == password);
 
             }
             catch (Exception)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Food_Delivery_App_API.Repositories
 {
-   public interface ICustomerRepository
+    public interface ICustomerRepository
     {
         List<Restaurant> ViewAllRestaraunts();
         List<Restaurant> ViewAllRestarauntsByCity(string City);
@@ -18,6 +18,8 @@ namespace Food_Delivery_App_API.Repositories
         List<Order> ViewOrdersOfCustomer(long UserId);
         List<Order> OrderStatus(long UserId);
         void UpdateCustomerDetails(User user);
+
+        
         //Logout Function
     }
 }

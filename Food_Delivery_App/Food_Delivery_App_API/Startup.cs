@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +36,7 @@ namespace Food_Delivery_App_API
         {
             services.AddDbContext<OnlineFoodDeliveryContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-           );            
+           );
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IRestaurantOwnerRepository, RestaurantOwnerRepository>();
 
@@ -62,6 +64,29 @@ namespace Food_Delivery_App_API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Food_Delivery_App_API", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
             });
         }
 
@@ -70,7 +95,7 @@ namespace Food_Delivery_App_API
         {
             app.UseCors(options =>
             options.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader());
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -78,10 +103,15 @@ namespace Food_Delivery_App_API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Food_Delivery_App_API v1"));
             }
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "ImageStorage")),
+                RequestPath = "/iDigital8--Online-Food-Delivery-Application/Food_Delivery_App/Food_Delivery_App_API/ImageStorage"
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

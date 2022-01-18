@@ -28,8 +28,8 @@ namespace Food_Delivery_App_API.Controllers
         {
             this.UserRepository = repository;
         }
-        [HttpGet]
-        [Route("Login/{emailId}/{password}")]
+        [HttpPost]
+        [Route("Login")]
         public IActionResult Login(string emailId, string password)
         {
             UserModule model = null;
@@ -41,7 +41,7 @@ namespace Food_Delivery_App_API.Controllers
             }
             else
             {
-                model = new UserModule() { UserId = 0, Token = "", Role = false };
+                model = new UserModule() { UserId = 0, Token = "", Role = "InvalidUser" };
             }
 
 
@@ -56,7 +56,7 @@ namespace Food_Delivery_App_API.Controllers
             try
             {
                 UserRepository.AddUser(user);
-                return Ok();
+                return Ok("Your userID is: " + user.UserId);
             }
             catch (Exception ex)
             {
@@ -79,13 +79,13 @@ namespace Food_Delivery_App_API.Controllers
 
 
 
-            //    var token = new JwtSecurityToken(issuer: issuer,
+            //    var token = new jwtsecuritytoken(issuer: issuer,
             //audience: audience,
 
 
 
-            //expires: DateTime.Now.AddMinutes(120),
-            //signingCredentials: credentials);
+            //expires: datetime.now.addminutes(120),
+            //signingcredentials: credentials);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

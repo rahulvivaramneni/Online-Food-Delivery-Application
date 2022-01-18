@@ -75,7 +75,7 @@ namespace Food_Delivery_App_API.Repositories
         {
             try
             {
-                
+
                 db.DeliveryAgents.Update(deliveryAgent);
                 db.SaveChanges();
             }
@@ -89,7 +89,7 @@ namespace Food_Delivery_App_API.Repositories
         {
             try
             {
-                
+
                 db.Items.Update(item);
                 db.SaveChanges();
             }
@@ -100,10 +100,11 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public void UpdateOrderStatus(long orderId, string orderStatus)
+        public void UpdateOrderStatus(Order order)
         {
-            Order order = db.Orders.Find(orderId);
-            order.OrderStatus = orderStatus;
+            //Order order = db.Orders.Find(orderId);
+            //order.OrderStatus = orderStatus;
+            db.Orders.Update(order);
             db.SaveChanges();
         }
 
@@ -121,11 +122,11 @@ namespace Food_Delivery_App_API.Repositories
             }
         }
 
-        public List<DeliveryAgent> ViewDeliveryAgentDetails(long restaurantId)
+        public DeliveryAgent ViewDeliveryAgentDetails(long restaurantId)
         {
             try
             {
-                List<DeliveryAgent> deliveryAgents = db.DeliveryAgents.Where(i => i.RestaurantId == restaurantId).ToList();
+                DeliveryAgent deliveryAgents = db.DeliveryAgents.Where(i => i.RestaurantId == restaurantId).First();
                 return deliveryAgents;
             }
             catch (Exception)
@@ -139,7 +140,7 @@ namespace Food_Delivery_App_API.Repositories
         {
             try
             {
-                List<Item> items = db.Items.Where(i=>i.RestaurantId==restaurantId).ToList();
+                List<Item> items = db.Items.Where(i => i.RestaurantId == restaurantId).ToList();
                 return items;
             }
             catch (Exception)
@@ -167,8 +168,49 @@ namespace Food_Delivery_App_API.Repositories
         {
             try
             {
-                Restaurant restaurant = db.Restaurants.Where(i=>i.RestaurantId==restaurantId).First();
+                Restaurant restaurant = db.Restaurants.Where(i => i.RestaurantId == restaurantId).First();
                 return restaurant;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Item GetItemById(long itemId)
+        {
+            try
+            {
+                Item item = db.Items.Where(i => i.Id == itemId).First();
+                return item;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Order GetOrderById(long orderId)
+        {
+            try
+            {
+                Order order = db.Orders.Where(i => i.OrderId == orderId).First();
+                return order;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public DeliveryAgent GetAgentById(long agentId)
+        {
+            try
+            {
+                DeliveryAgent deliveryAgent = db.DeliveryAgents.Where(i => i.AgentId == agentId).First();
+                return deliveryAgent;
             }
             catch (Exception)
             {

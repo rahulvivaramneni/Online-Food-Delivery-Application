@@ -17,8 +17,14 @@ namespace Food_Delivery_App_API.Repositories
         void UpdateAgentDetails(DeliveryAgent deliveryAgent);
         List<Item> ViewMenu(long restaurantId);// Owner can able to all the items in the menu        
         Restaurant ViewRestaurantDetails(long restaurantId);
-        List<DeliveryAgent> ViewDeliveryAgentDetails(long restaurantId);
+        DeliveryAgent ViewDeliveryAgentDetails(long restaurantId);
         List<Order> ViewOrderDetails(long restaurantId);
-        void UpdateOrderStatus(long orderId,string orderStatus);
+        void UpdateOrderStatus(Order order);
+
+        Item GetItemById(long itemId);
+
+        Order GetOrderById(long orderId);
+
+        DeliveryAgent GetAgentById(long agentId);
     }
 }

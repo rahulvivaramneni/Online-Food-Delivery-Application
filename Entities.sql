@@ -36,6 +36,7 @@ ItemDescription varchar(200) not null,
 ItemImg varchar(255),
 isAvailable bit not null default 1
 )
+EXEC SP_RENAME 'Items.ItemId', 'id', 'COLUMN'
 
 create table DeliveryAgents(
 AgentId bigint identity primary key,
@@ -55,13 +56,14 @@ OrderStatus varchar(20) not null
 create table OrderDetails(
 OrderDetailsId bigint identity primary key,
 OrderId bigint foreign key references Orders(OrderId),
-ItemId bigint foreign key references Items(ItemId),
+ItemId bigint foreign key references Items(id),
 ItemPrice numeric,
 Quantity int
 )
+drop table OrderDetails
 
 /*drop table Users*/
-insert into Users values('Tina','Smith','9123456789','Tina@gmail.com','Tin@123','sadsfsdgrdfhgfgfxgdsfdf','Pune',0)
+insert into Users values('ketaki','D','8838536145','Ketaki@gmail.com','Ketaki@123','Pune','Pune','Owner')
 insert into Users values('Priya','Smith','9123456789','Priya@gmail.com','Priy@123','sadsfsdgrdfhgfgfxgdsfdf','Pune',1)
 
 insert into Restaurants values('Park Inn','987456321','Cannaught place','New Delhi','img1.jpg',1)
@@ -83,6 +85,33 @@ select *from Restaurants
 select * from Items
 select * from DeliveryAgents
 select * from Orders
-select * from OrderDetails
 insert into Orders values(2,1,2,'NetBanking',40.00,'On the way')
+
+/*Please run below command, no need to drop table*/
+ALTER TABLE Users
+ALTER COLUMN UserRole varchar(10)
+
+UPDATE Users
+SET UserRole = 'Owner'
+WHERE UserId=1;
+
+UPDATE Users
+SET UserRole = 'Customer'
+WHERE UserId=2;
+
+-----new Orders Table
+create table OrdersNew(
+OrderId  bigint identity primary key,
+UserId bigint foreign key references Users(UserId),
+PaymentMode varchar(20) not null,
+TotalPrice decimal not null,
+OrderStatus varchar(20) not null,
+OrderDate datetime not null default getdate()
+)
+
+
+alter table Orders add OrderDate datetime not null default getdate()
+delete from Orders where RestaurantId IS NULL
+
+
 

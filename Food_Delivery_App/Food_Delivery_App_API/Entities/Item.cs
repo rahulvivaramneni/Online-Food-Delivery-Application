@@ -12,7 +12,7 @@ namespace Food_Delivery_App_API.Entities
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        public long ItemId { get; set; }
+        public long Id { get; set; }
         public long? RestaurantId { get; set; }
         public string ItemName { get; set; }
         public decimal Price { get; set; }

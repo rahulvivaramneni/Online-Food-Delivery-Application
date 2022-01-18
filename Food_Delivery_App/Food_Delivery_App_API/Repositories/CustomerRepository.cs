@@ -18,7 +18,8 @@ namespace Food_Delivery_App_API.Repositories
         {
             try
             {
-                Order orders = db.Orders.Find(orderid);
+                Order orders = db.Orders.Where(i => i.OrderId == orderid).First();
+                //Order orders = db.Orders.Find(orderid);
                 if (orders.OrderStatus == "Delivered")
                 {
                     orders.OrderStatus = "Delivered";
@@ -149,6 +150,6 @@ namespace Food_Delivery_App_API.Repositories
                 throw;
             }
         }
-        
+
     }
 }

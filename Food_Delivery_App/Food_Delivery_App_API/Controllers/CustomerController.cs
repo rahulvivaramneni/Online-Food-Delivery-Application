@@ -1,5 +1,6 @@
 ﻿using Food_Delivery_App_API.Entities;
 using Food_Delivery_App_API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Food_Delivery_App_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Roles = "Customer")]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository customerRepository;
