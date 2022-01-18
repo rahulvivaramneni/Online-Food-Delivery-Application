@@ -1,29 +1,25 @@
 ﻿using Food_Delivery_App_API.Entities;
 using Food_Delivery_App_API.Repositories;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Food_Delivery_App_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize(Roles = "Owner")]
+    //need to implement in UI
+    //[Authorize(Roles = "Owner")]
     public class RestaurantOwnerController : ControllerBase
     {
         private readonly IRestaurantOwnerRepository restaurantOwnerRepository;
-        private readonly IWebHostEnvironment _hostingEnvironment;
-        public RestaurantOwnerController(IRestaurantOwnerRepository repository, IWebHostEnvironment hostingEnvironment)
+        public RestaurantOwnerController(IRestaurantOwnerRepository repository)
         {
             this.restaurantOwnerRepository = repository;
-            _hostingEnvironment = hostingEnvironment;
         }
         [HttpGet]
         [Route("ViewDeliveryAgentDetails")]
@@ -31,7 +27,7 @@ namespace Food_Delivery_App_API.Controllers
         {
             try
             {
-                DeliveryAgent deliveryAgents = restaurantOwnerRepository.ViewDeliveryAgentDetails(restaurantId);
+                List<DeliveryAgent> deliveryAgents = restaurantOwnerRepository.ViewDeliveryAgentDetails(restaurantId);
                 return Ok(deliveryAgents);
             }
             catch (Exception ex)
@@ -95,7 +91,7 @@ namespace Food_Delivery_App_API.Controllers
                 return Content(ex.Message);
             }
         }
-        [HttpPost]
+        [HttpPut]
         [Route("UpdateAgentDetails")]
         public IActionResult UpdateAgentDetails(DeliveryAgent deliveryAgent)
         {
@@ -124,13 +120,13 @@ namespace Food_Delivery_App_API.Controllers
                 return Content(ex.Message);
             }
         }
-        [HttpPost]
-        [Route("UpdateItem")]
-        public IActionResult PutUpdateItem(Item item)
+        [HttpPut]
+        [Route("UpdateItem/{itemId}")]
+        public IActionResult PutUpdateItem(int itemId, decimal price, string itemDescription)
         {
             try
             {
-                restaurantOwnerRepository.UpdateItem(item);
+                restaurantOwnerRepository.UpdateItem(itemId, price, itemDescription);
                 return Ok();
             }
             catch (Exception ex)
@@ -139,33 +135,18 @@ namespace Food_Delivery_App_API.Controllers
                 return Content(ex.Message);
             }
         }
-        [HttpPost]
-        [Route("UpdateOrderStatus")]
-        public void UpdateOrderStatus(Order order)
+        [HttpPut]
+        [Route("UpdateOrderStatus/{orderId}")]
+        public void UpdateOrderStatus(long orderId, string orderStatus)
         {
-            restaurantOwnerRepository.UpdateOrderStatus(order);
+            restaurantOwnerRepository.UpdateOrderStatus(orderId, orderStatus);
         }
-        //[HttpPost]
-        //[Route("AddItem")]
-        //public IActionResult AddLead(Item item)
-        //{
-        //    try
-        //    {
-        //        restaurantOwnerRepository.AddItem(item);
-        //        return Ok();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Content(ex.Message);
-        //    }
-        //}
         [HttpPost]
         [Route("AddItem")]
-        public IActionResult AddItem(Item item)
+        public IActionResult AddLead(Item item)
         {
             try
             {
-                item.ItemImg = GetItemImg(item.ItemImg);
                 restaurantOwnerRepository.AddItem(item);
                 return Ok();
             }
@@ -173,33 +154,6 @@ namespace Food_Delivery_App_API.Controllers
             {
                 return Content(ex.Message);
             }
-        }
-        string Filename;
-        private string GetItemImg(string itemImg)
-        {
-            Regex regex = new Regex(@"^[\w/\:.-]+;base64,");
-            itemImg = regex.Replace(itemImg, string.Empty);
-            byte[] Files = Convert.FromBase64String(itemImg);
-            string webRootPath = _hostingEnvironment.WebRootPath;
-            string path = webRootPath + "/iDigital8--Online-Food-Delivery-Application/Food_Delivery_App/Food_Delivery_App_API/ImageStorage";
-            if (!System.IO.Directory.Exists(path))
-            {
-                System.IO.Directory.CreateDirectory(path);
-            }
-            var data = itemImg.Substring(0, 5);
-            switch (data.ToUpper())
-            {
-                case "IVBOR":
-                    Filename = Guid.NewGuid().ToString() + ".png";
-                    break;
-                case "/9J/4":
-                    Filename = Guid.NewGuid().ToString() + ".jpg";
-                    break;
-            }
-            string imgPath = Path.Combine(path, Filename);
-            System.IO.File.WriteAllBytes(imgPath, Files);
-            string Images = "/iDigital8--Online-Food-Delivery-Application/Food_Delivery_App/Food_Delivery_App_API/ImageStorage/" + Filename;
-            return Images;
         }
         [HttpDelete]
         [Route("DeleteItem/{itemId}")]
@@ -226,53 +180,6 @@ namespace Food_Delivery_App_API.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ex.Message);
-            }
-        }
-
-        [HttpGet]
-        [Route("GetItemById")]
-        public IActionResult GetItemById(long itemId)
-        {
-            try
-            {
-                Item item = restaurantOwnerRepository.GetItemById(itemId);
-                return Ok(item);
-            }
-            catch (Exception ex)
-            {
-
-                return Content(ex.Message);
-            }
-        }
-
-        [HttpGet]
-        [Route("GetOrderById")]
-        public IActionResult GetOrderById(long orderId)
-        {
-            try
-            {
-                Order order = restaurantOwnerRepository.GetOrderById(orderId);
-                return Ok(order);
-            }
-            catch (Exception ex)
-            {
-
-                return Content(ex.Message);
-            }
-        }
-        [HttpGet]
-        [Route("GetAgentById")]
-        public IActionResult GetAgentById(long agentId)
-        {
-            try
-            {
-                DeliveryAgent deliveryAgent = restaurantOwnerRepository.GetAgentById(agentId);
-                return Ok(deliveryAgent);
-            }
-            catch (Exception ex)
-            {
-
                 return Content(ex.Message);
             }
         }

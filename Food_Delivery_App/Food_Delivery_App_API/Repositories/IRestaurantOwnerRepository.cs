@@ -12,7 +12,7 @@ namespace Food_Delivery_App_API.Repositories
         void UpdateRestaurant(Restaurant restaurant);
         void AddItem(Item item);
         public void DeleteItem(long itemId);
-        void UpdateItem(Item item);
+        void UpdateItem(int itemId, decimal price, string itemDescription);
         void AddAgentDetails(DeliveryAgent deliveryAgent);
         void UpdateAgentDetails(DeliveryAgent deliveryAgent);
         List<Item> ViewMenu(long restaurantId);// Owner can able to all the items in the menu        
