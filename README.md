@@ -1,1 +1,1 @@
-# iDigital8--Online-Food-Delivery-Application
+Online-Food-Delivery-Application
